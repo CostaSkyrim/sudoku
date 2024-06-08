@@ -1,7 +1,7 @@
-package printboard
+package pb
 
 import "fmt"
 
 func PrintBoard(b [9][9]int) {
-	fmt.Println("works")
+	fmt.Println(b)
 }
