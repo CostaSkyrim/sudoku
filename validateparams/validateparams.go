@@ -7,7 +7,6 @@ import (
 )
 
 func ValidateParams(s []string) ([9][9]int, error) {
-
 	arr := [9][9]int{}
 
 	if len(s) != 9 {
@@ -20,11 +19,13 @@ func ValidateParams(s []string) ([9][9]int, error) {
 	}
 
 	for i := 0; i < len(s); i++ {
+		if len(s[i]) != 9 {
+			return arr, errors.New("Error")
+		}
 		for _, r := range s[i] {
 			if !isNumeric(r) {
 				return arr, errors.New("Error")
 			}
-
 		}
 	}
 

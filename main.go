@@ -3,7 +3,9 @@ package main
 import (
 	"fmt"
 	"os"
+
 	pb "sudoku/printboard"
+	sv "sudoku/solver"
 	vp "sudoku/validateparams"
 )
 
@@ -14,7 +16,10 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		pb.PrintBoard(validata)
+		if sv.SolveSudoku(&validata) {
+			pb.PrintBoard(validata)
+		} else {
+			fmt.Println("Error")
+		}
 	}
-
 }
