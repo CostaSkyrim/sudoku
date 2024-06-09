@@ -6,19 +6,20 @@ import (
 	"strings"
 )
 
+// this function checks if the sudoku is valid and converts to integer
 func ValidateParams(s []string) ([9][9]int, error) {
 	arr := [9][9]int{}
 
-	if len(s) != 9 {
+	if len(s) != 9 { // if it's less than 9 arguments print error
 		return arr, errors.New("Error")
 	}
 
-	for i := 0; i < len(s); i++ {
+	for i := 0; i < len(s); i++ { //replaces dots with 0s
 		r := strings.ReplaceAll(s[i], ".", "0")
 		s[i] = r
 	}
 
-	for i := 0; i < len(s); i++ {
+	for i := 0; i < len(s); i++ { // checks if the arguments are numbers
 		if len(s[i]) != 9 {
 			return arr, errors.New("Error")
 		}
@@ -29,7 +30,7 @@ func ValidateParams(s []string) ([9][9]int, error) {
 		}
 	}
 
-	for row := 0; row < 9; row++ {
+	for row := 0; row < 9; row++ { // converts the string to integer
 		for col := 0; col < 9; col++ {
 			num, err := strconv.Atoi(string(s[row][col]))
 			if err != nil {
@@ -43,6 +44,7 @@ func ValidateParams(s []string) ([9][9]int, error) {
 	return arr, nil
 }
 
+// function that checks if the parameters are numbers
 func isNumeric(r rune) bool {
 	if r < '0' || r > '9' {
 		return false
